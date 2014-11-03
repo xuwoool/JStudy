@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/文件夹可以修改-->
+<decorators defaultdir="/">
+    <!-- 放弃装饰部分 -->
+    <excludes>
+        <pattern>/login.jsp</pattern>
+        <pattern>/static/*</pattern>
+        <pattern>/uploadfile/*</pattern>
+    </excludes>
+
+    <decorator name="main" page="/WEB-INF/layout/decorator.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>

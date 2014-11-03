@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>小工具</title>
+		<style type="text/css">
+			textarea,input {
+				border:1px solid #999;
+			}
+			.box {
+				padding:5px 5px 5px 5px;
+				margin:5px 5px 5px 5px;
+				border-bottom:1px solid #999;
+			}
+			.tool {
+				font-weight:bolder;
+			}
+			.result {
+				font-weight:bolder;
+				color:red;
+			}
+		</style>
+		<script>
+			//去除字符串前后空串
+			String.prototype.trim = function() {
+				if (arguments.length !== 0) throw Error.parameterCount();
+				return this.replace(/^\s+|\s+$/g,'');
+			}
+			window.onload = function() {
+				var jsonstr = document.getElementById("jsonstr");
+				jsonstr.onkeyup = function() {
+					//"length" : NumberLong(156246)
+					var result = document.getElementById("result1");
+					var str = this.value.trim();
+					if  (str == "") {
+						result.innerHTML = "";
+						return;
+					}
+					var reg = /\"length\"\s*\:\s*NumberLong\([0-9]+\)/ig;
+					var arr = str.match(reg);
+					
+					if (arr && arr.length > 0) {
+						var total = 0;
+						for (var i = 0; i < arr.length; i++) {
+							var t = arr[i].replace(/\"length\"\s*\:\s*NumberLong\(/,"").replace(")","");
+							total += parseInt(t);
+						}
+						result.innerHTML = "{\"return\":\""+total+"\"}";
+					} else {
+						result.innerHTML = "字符串不合法";
+					}
+				};
+				var millisec = document.getElementById("millisec");
+				millisec.onkeyup = function() {
+					var result = document.getElementById("result2");
+					var str = this.value.trim();
+					if  (str == "") {
+						result.innerHTML = "";
+						return;
+					}
+					var d = new Date();
+					d.setTime(str);
+					result.innerHTML = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours()+ ":" + d.getMinutes() + ":" + d.getSeconds();
+				};
+				var utf8str = document.getElementById("utf8str");
+				utf8str.onkeyup = function() {
+					var result = document.getElementById("result3");
+					var str = this.value.trim();
+					if  (str == "") {
+						result.innerHTML = "";
+						return;
+					}
+					result.innerHTML = decodeURI(str);
+				};
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box">
+		<div class="tool">工具1：json字符串</div><textarea id="jsonstr" rows="10" cols="40"></textarea>
+		<div class="result">结果：</div><span id="result1"></span>
+		</div>
+		<div class="box">
+		<div class="tool">工具2：日期毫秒串</div><input id="millisec" size="30">
+		<div class="result">结果：</div><span id="result2"></span>
+		</div>
+		<div class="box">
+		<div class="tool">工具3：Unicode字符转码</div><input id="utf8str" size="30">
+		<div class="result">结果：</div><span id="result3"></span>
+		</div>
+	</body>
+</html>
