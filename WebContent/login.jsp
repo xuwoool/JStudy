@@ -10,7 +10,7 @@
     <meta name="author" content="xuxb">
     <link rel="icon" href="static/images/favicon.ico">
 
-    <title>登录页面</title>
+    <title>JStudy</title>
 
     <!-- Bootstrap core CSS -->
     <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">

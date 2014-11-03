@@ -16,6 +16,5 @@
 	* 使用jcom+pdf2swf+flexpaper完成文档在线预览
 * 2014-09-18
 	* 使用sitemesh 2进行网页布局
-* 2014-11-01
-	* 好久都没有更新了
+	
 #####[README.md语法](http://note.youdao.com/share/?id=ed0f386beac45440451a20262c2cca95&type=note)

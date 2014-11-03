@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="OrderApply" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="订单输入" g="216,17,48,48">
+      <transition name="to 订单申请" to="订单输入" g="-71,-17"/>
+   </start>
+   <end name="end1" g="313,665,48,48"/>
+   <decision name="订单审核" g="210,267,48,48">
+      <transition name="通过" to="生产-交付" g="322,291:-53,-17"/>
+      <transition name="不通过" to="cancel1" g="125,293:-65,-17"/>
+   </decision>
+   <state name="产品生产" g="208,443,92,52">
+      <transition name="to state2" to="装运过程" g="-59,-17"/>
+   </state>
+   <fork name="生产-交付" g="298,353,48,48">
+      <transition name="to state1" to="产品生产" g="251,378:-59,-17"/>
+      <transition name="to state3" to="财务收支" g="399,375:-59,-17"/>
+   </fork>
+   <state name="装运过程" g="210,517,92,52">
+      <transition name="to join1" to="join1" g="259,607:-53,-17"/>
+   </state>
+   <state name="财务收支" g="354,453,92,52">
+      <transition name="to join1" to="join1" g="402,604:-53,-17"/>
+   </state>
+   <join name="join1" g="310,581,48,48">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </join>
+   <state name="订单输入" g="194,97,92,52">
+      <transition name="to 订单检查" to="订单审核" g="-71,-17"/>
+   </state>
+   <state name="订单审核" g="194,181,92,52">
+      <transition name="to exclusive1" to="订单审核" g="-83,-17"/>
+   </state>
+   <end-cancel name="cancel1" g="104,351,48,48"/>
+</process>

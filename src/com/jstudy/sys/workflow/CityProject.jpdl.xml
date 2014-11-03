@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="CityProject" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="16,70,48,48" name="start1">
+      <transition g="-41,-39" name="to exclusive2" to="exclusive2"/>
+   </start>
+   <decision g="96,68,92,52" name="exclusive2" expr="#{decision}">
+      <transition g="-47,-26" name="to 中心主任审批" to="中心主任审批"/>
+      <transition g="-25,15" name="to 工维部经理" to="工维部经理"/>
+   </decision>
+   <task g="220,16,92,52" name="中心主任审批" assignee="#{hander}">
+      <transition g="-15,-20" name="to 工维部经理" to="工维部经理"/>
+   </task>
+   <task g="344,68,92,52" name="工维部经理" assignee="#{hander}">
+      <transition g="-83,22" name="to exclusive1" to="exclusive1"/>
+   </task>
+   <decision g="468,70,48,48" name="exclusive1">
+      <transition g="-62,-27" name="to 分公司领导" to="分公司领导"/>
+      <transition name="to 省公司管理员" to="省公司管理员" g="-41,14"/>
+   </decision>
+   <task g="548,16,92,52" name="分公司领导" assignee="#{hander}">
+      <transition name="to 省公司管理员" to="省公司管理员" g="-9,-21"/>
+   </task>
+   <task g="672,68,92,52" name="省公司管理员" assignee="#{hander}">
+      <transition g="-32,25" name="to 公司领导" to="公司领导"/>
+   </task>
+   <task g="796,68,92,52" name="公司领导" assignee="#{hander}">
+      <transition g="-25,17" name="to end1" to="end1"/>
+   </task>
+   <end g="920,70,48,48" name="end1"/>
+</process>

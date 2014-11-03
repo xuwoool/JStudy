@@ -13,19 +13,44 @@
 	<style type="text/css">
 		form > div,input {margin: 5px;}
 	</style>
+	<script type="text/javascript">
+		$(function() {
+			<c:if test="${!empty filename}">
+				$("#documentViewer").css({"height":"590px"});
+			</c:if>
+			$("#upload").click(function() {
+				$(this).hide();
+				$("#uploading").show();
+			});
+			$("#uploading").hide();
+		});
+		
+	</script>
 </head>
 <body>
+<!-- 路径导航 -->
+<ol class="breadcrumb">
+  <li><a href="#"><span class="glyphicon glyphicon-home"></span>主页</a></li>
+  <li><a href="#">文档管理</a></li>
+  <li class="active">在线预览</li>
+</ol>
 
+<c:if test="${empty filename}">
 <form name="uploadForm" method="post" enctype="multipart/form-data" action="fileupload">  
     <div>附件1:<input type="file" name="file1"/></div>
     <div>附件2:<input type="file" name="file2"/></div>
-    <div><input type="submit" name="submit" value="上传"><input type="reset" name="reset" value="重置"></div>
+    <div>
+    	<input type="submit" name="submit" value="上传" id="upload">
+    	<input type="button" name="button" value="上传中..." id="uploading" disabled="disabled">
+    	<input type="reset" name="reset" value="重置">
+    </div>
  </form>
+</c:if>
 
-<div id="documentViewer" class="flexpaper_viewer" style="height:450px"></div>
 <c:if test="${!empty filename}">
 <%--swf文件展示 --%>
 <c:if test="${!empty flexpaper}">
+<div id="documentViewer" class="flexpaper_viewer" style="height:450px"></div>
 <script type="text/javascript">
     $('#documentViewer').FlexPaperViewer(
             { config : {

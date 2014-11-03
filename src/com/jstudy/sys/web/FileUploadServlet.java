@@ -101,7 +101,7 @@ public class FileUploadServlet extends HttpServlet {
 						}
 						//成功转成pdf后，继续转swf文件
 						swfFile = fileName+".swf";
-						JComConvertor.pdf2swf(pdfPath, "E:/workspace/JStudy/WebContent/swf/"+swfFile);
+						JComConvertor.pdf2swf(pdfPath, "E:/gitworkspace/JStudy/WebContent/swf/"+swfFile);
 						//flexpaper展示swf文件
 						request.setAttribute("flexpaper", "flexpaper");
 						request.setAttribute("filename", "swf/"+swfFile);

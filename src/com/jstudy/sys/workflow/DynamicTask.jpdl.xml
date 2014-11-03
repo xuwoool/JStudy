@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="DynamicTask" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="10,18,48,48" name="start1">
+      <transition name="to state1" to="state1" g="-59,-17"/>
+   </start>
+   <end g="386,35,48,48" name="end1"/>
+   <state name="state1" g="92,66,92,52">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+      <transition name="to task1" to="task1" g="-53,-17"/>
+   </state>
+   <task name="task1" g="227,127,92,52">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+</process>

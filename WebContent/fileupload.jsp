@@ -6,11 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>jquery.fileupload</title>
 
-<!-- Bootstrap core CSS -->
-<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="static/fileupload/jquery.fileupload-ui.css">
 
-<script src="static/jquery/jquery-1.11.1.min.js"></script>
 <script src="static/fileupload/jquery.ui.widget.js"></script>
 <script src="static/fileupload/jquery.iframe-transport.js"></script>
 <script src="static/fileupload/jquery.fileupload.js"></script>

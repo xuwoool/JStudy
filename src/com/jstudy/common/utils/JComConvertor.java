@@ -28,7 +28,7 @@ public class JComConvertor {
 	/**
 	 * pdf转swf工具
 	 */
-	private static final String SWFTools = "D:/Program Files/SWFTools/pdf2swf.exe";
+	private static final String SWFTools = "D:/SWFTools/pdf2swf.exe";
 	
 	/**
      * JCom调用MS Office转换word为PDF
